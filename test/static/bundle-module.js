@@ -5,11 +5,11 @@ var focusableElList = ['a[href]', 'area[href]', 'button:not([disabled])', 'embed
 var focusableElSelector = focusableElList.join();
 
 module.exports = function (el) {
-    var sequentialOnly = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    var keyboardOnly = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
     var focusableEls = Array.prototype.slice.call(el.querySelectorAll(focusableElSelector));
 
-    if (sequentialOnly === true) {
+    if (keyboardOnly === true) {
         focusableEls = focusableEls.filter(function (focusableEl) {
             return focusableEl.getAttribute('tabindex') !== '-1';
         });
