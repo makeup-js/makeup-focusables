@@ -602,6 +602,11 @@ module.exports = function (el) {
 
     var focusableEls = Array.prototype.slice.call(el.querySelectorAll(focusableElSelector));
 
+    // filter out elements with display: none
+    focusableEls = focusableEls.filter(function (focusableEl) {
+        return window.getComputedStyle(focusableEl).display !== 'none';
+    });
+
     if (keyboardOnly === true) {
         focusableEls = focusableEls.filter(function (focusableEl) {
             return focusableEl.getAttribute('tabindex') !== '-1';
@@ -617,6 +622,7 @@ $_mod.def("/makeup-focusables$0.0.1/docs/index", function(require, exports, modu
 var listEl = document.getElementById('list');
 var appender1 = document.getElementById('appender1');
 var appender2 = document.getElementById('appender2');
+var appender3 = document.getElementById('appender3');
 var output = document.getElementById('output');
 
 function onButtonClick(e) {
@@ -627,8 +633,11 @@ function onButtonClick(e) {
 
     if (e.target.id === 'appender1') {
         listItem.setAttribute('tabindex', '0');
-    } else {
+    } else if (e.target.id === 'appender2') {
         listItem.setAttribute('tabindex', '-1');
+    } else {
+        listItem.setAttribute('tabindex', '0');
+        listItem.setAttribute('hidden', 'hidden');
     }
 
     listItem.innerText = 'Item ' + (listEl.childNodes.length);
@@ -640,6 +649,7 @@ function onButtonClick(e) {
 
 appender1.addEventListener('click', onButtonClick);
 appender2.addEventListener('click', onButtonClick);
+appender3.addEventListener('click', onButtonClick);
 
 });
 $_mod.run("/makeup-focusables$0.0.1/docs/index");

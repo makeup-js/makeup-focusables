@@ -73,6 +73,34 @@ describe("makeup-focusable", function() {
         });
     });
 
+    describe('when element contains elements with tabindex, with hidden attribute', function() {
+        var focusableEls;
+
+        beforeAll(function() {
+            body.innerHTML = '<div hidden tabindex="0"></div><div></div><div hidden tabindex="0"></div>';
+            focusableEls = focusable(body);
+        });
+
+        it("should return zero elements", function() {
+            expect(focusableEls.length).toBe(0);
+        });
+    });
+
+    describe('when element contains elements with tabindex, with display:none', function() {
+        var focusableEls;
+
+        beforeAll(function() {
+            body.innerHTML = '<div style="display:none" tabindex="0"></div>' +
+                                '<div></div>' +
+                                '<div style="display:none" tabindex="0"></div>';
+            focusableEls = focusable(body);
+        });
+
+        it("should return zero elements", function() {
+            expect(focusableEls.length).toBe(0);
+        });
+    });
+
     describe('when element contains elements with negative tabindex, with sequentialOnly set to true', function() {
         var focusableEls;
 

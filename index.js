@@ -9,6 +9,11 @@ module.exports = function (el) {
 
     var focusableEls = Array.prototype.slice.call(el.querySelectorAll(focusableElSelector));
 
+    // filter out elements with display: none
+    focusableEls = focusableEls.filter(function (focusableEl) {
+        return window.getComputedStyle(focusableEl).display !== 'none';
+    });
+
     if (keyboardOnly === true) {
         focusableEls = focusableEls.filter(function (focusableEl) {
             return focusableEl.getAttribute('tabindex') !== '-1';
