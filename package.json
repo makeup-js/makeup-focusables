@@ -49,5 +49,10 @@
     "parallelshell": "^3",
     "pre-commit": "^1",
     "rimraf": "^2"
-  }
+  },
+  "files": [
+    "browser.json",
+    "index.js",
+    "yarn.lock"
+  ]
 }
