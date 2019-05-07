@@ -1,9 +1,9 @@
-describe("makeup-focusable", function() {
+describe('makeup-focusables', function() {
     var focusable = require('../index.js');
     var body = document.body;
 
     describe('when module is imported', function() {
-        it("module should not be undefined", function() {
+        it('module should not be undefined', function() {
             expect(focusable).not.toEqual(undefined);
         });
     });
@@ -16,7 +16,7 @@ describe("makeup-focusable", function() {
             focusableEls = focusable(body);
         });
 
-        it("should only return links with hrefs", function() {
+        it('should only return links with hrefs', function() {
             expect(focusableEls.length).toBe(1);
         });
     });
@@ -29,7 +29,7 @@ describe("makeup-focusable", function() {
             focusableEls = focusable(body);
         });
 
-        it("should only return enabled buttons", function() {
+        it('should only return enabled buttons', function() {
             expect(focusableEls.length).toBe(1);
         });
     });
@@ -42,7 +42,7 @@ describe("makeup-focusable", function() {
             focusableEls = focusable(body);
         });
 
-        it("should return all elements with tabindex=0", function() {
+        it('should return all elements with tabindex=0', function() {
             expect(focusableEls.length).toBe(2);
         });
     });
@@ -55,7 +55,7 @@ describe("makeup-focusable", function() {
             focusableEls = focusable(body);
         });
 
-        it("should return all elements with positive tabindex", function() {
+        it('should return all elements with positive tabindex', function() {
             expect(focusableEls.length).toBe(2);
         });
     });
@@ -68,7 +68,7 @@ describe("makeup-focusable", function() {
             focusableEls = focusable(body);
         });
 
-        it("should return all elements with negative tabindex", function() {
+        it('should return all elements with negative tabindex', function() {
             expect(focusableEls.length).toBe(2);
         });
     });
@@ -81,7 +81,7 @@ describe("makeup-focusable", function() {
             focusableEls = focusable(body);
         });
 
-        it("should return zero elements", function() {
+        it('should return zero elements', function() {
             expect(focusableEls.length).toBe(0);
         });
     });
@@ -96,7 +96,7 @@ describe("makeup-focusable", function() {
             focusableEls = focusable(body);
         });
 
-        it("should return zero elements", function() {
+        it('should return zero elements', function() {
             expect(focusableEls.length).toBe(0);
         });
     });
@@ -109,7 +109,7 @@ describe("makeup-focusable", function() {
             focusableEls = focusable(body, true);
         });
 
-        it("should return all elements with negative tabindex", function() {
+        it('should return all elements with negative tabindex', function() {
             expect(focusableEls.length).toBe(0);
         });
     });

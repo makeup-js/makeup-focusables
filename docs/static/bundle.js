@@ -594,30 +594,29 @@ https://github.com/joyent/node/blob/master/lib/module.js
 $_mod.def("/makeup-focusables$0.0.3/index", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var focusableElList = ['a[href]', 'area[href]', 'button:not([disabled])', 'embed', 'iframe', 'input:not([disabled])', 'object', 'select:not([disabled])', 'textarea:not([disabled])', '*[tabindex]', '*[contenteditable]'];
-
 var focusableElSelector = focusableElList.join();
 
 module.exports = function (el) {
-    var keyboardOnly = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+  var keyboardOnly = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+  var focusableEls = Array.prototype.slice.call(el.querySelectorAll(focusableElSelector)); // filter out elements with display: none
 
-    var focusableEls = Array.prototype.slice.call(el.querySelectorAll(focusableElSelector));
+  focusableEls = focusableEls.filter(function (focusableEl) {
+    return window.getComputedStyle(focusableEl).display !== 'none';
+  });
 
-    // filter out elements with display: none
+  if (keyboardOnly === true) {
     focusableEls = focusableEls.filter(function (focusableEl) {
-        return window.getComputedStyle(focusableEl).display !== 'none';
+      return focusableEl.getAttribute('tabindex') !== '-1';
     });
+  }
 
-    if (keyboardOnly === true) {
-        focusableEls = focusableEls.filter(function (focusableEl) {
-            return focusableEl.getAttribute('tabindex') !== '-1';
-        });
-    }
-
-    return focusableEls;
+  return focusableEls;
 };
 
 });
-$_mod.def("/makeup-focusables$0.0.3/docs/index", function(require, exports, module, __filename, __dirname) { var focusable = require('/makeup-focusables$0.0.3/index'/*'../index.js'*/);
+$_mod.def("/makeup-focusables$0.0.3/docs/index", function(require, exports, module, __filename, __dirname) { "use strict";
+
+var focusable = require('/makeup-focusables$0.0.3/index'/*'../index.js'*/);
 
 var listEl = document.getElementById('list');
 var appender1 = document.getElementById('appender1');
@@ -626,25 +625,22 @@ var appender3 = document.getElementById('appender3');
 var output = document.getElementById('output');
 
 function onButtonClick(e) {
-    e.preventDefault();
+  e.preventDefault();
+  var listItem = document.createElement('li');
 
-    var listItem = document.createElement('li');
-    var focusableEls;
+  if (e.target.id === 'appender1') {
+    listItem.setAttribute('tabindex', '0');
+  } else if (e.target.id === 'appender2') {
+    listItem.setAttribute('tabindex', '-1');
+  } else {
+    listItem.setAttribute('tabindex', '0');
+    listItem.setAttribute('hidden', 'hidden');
+  }
 
-    if (e.target.id === 'appender1') {
-        listItem.setAttribute('tabindex', '0');
-    } else if (e.target.id === 'appender2') {
-        listItem.setAttribute('tabindex', '-1');
-    } else {
-        listItem.setAttribute('tabindex', '0');
-        listItem.setAttribute('hidden', 'hidden');
-    }
-
-    listItem.innerText = 'Item ' + (listEl.childNodes.length);
-    listEl.appendChild(listItem);
-
-    focusableEls = focusable(listEl);
-    output.innerText = focusableEls.length;
+  listItem.innerText = "Item ".concat(listEl.childNodes.length);
+  listEl.appendChild(listItem);
+  var focusableEls = focusable(listEl);
+  output.innerText = focusableEls.length;
 }
 
 appender1.addEventListener('click', onButtonClick);
