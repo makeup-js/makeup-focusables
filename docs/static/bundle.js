@@ -591,7 +591,7 @@ https://github.com/joyent/node/blob/master/lib/module.js
     }
 })();
 
-$_mod.def("/makeup-focusables$0.0.3/index", function(require, exports, module, __filename, __dirname) { 'use strict';
+$_mod.def("/makeup-focusables$0.0.4/index", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var focusableElList = ['a[href]', 'area[href]', 'button:not([disabled])', 'embed', 'iframe', 'input:not([disabled])', 'object', 'select:not([disabled])', 'textarea:not([disabled])', '*[tabindex]', '*[contenteditable]'];
 var focusableElSelector = focusableElList.join();
@@ -614,9 +614,9 @@ module.exports = function (el) {
 };
 
 });
-$_mod.def("/makeup-focusables$0.0.3/docs/index", function(require, exports, module, __filename, __dirname) { "use strict";
+$_mod.def("/makeup-focusables$0.0.4/docs/index", function(require, exports, module, __filename, __dirname) { "use strict";
 
-var focusable = require('/makeup-focusables$0.0.3/index'/*'../index.js'*/);
+var focusable = require('/makeup-focusables$0.0.4/index'/*'../index.js'*/);
 
 var listEl = document.getElementById('list');
 var appender1 = document.getElementById('appender1');
@@ -648,4 +648,4 @@ appender2.addEventListener('click', onButtonClick);
 appender3.addEventListener('click', onButtonClick);
 
 });
-$_mod.run("/makeup-focusables$0.0.3/docs/index");
+$_mod.run("/makeup-focusables$0.0.4/docs/index");
