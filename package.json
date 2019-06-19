@@ -34,7 +34,6 @@
     "@babel/cli": "^7",
     "@babel/core": "^7",
     "@babel/preset-env": "^7",
-    "babel-plugin-transform-object-assign": "^6",
     "browser-sync": "^2",
     "core-js-pure": "^3",
     "coveralls": "^3",
