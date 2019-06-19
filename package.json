@@ -36,7 +36,6 @@
     "@babel/preset-env": "^7",
     "@ebay/browserslist-config": "^1",
     "browser-sync": "^2",
-    "core-js-pure": "^3",
     "coveralls": "^3",
     "eslint": "^5",
     "eslint-config-ebay": "^1",
