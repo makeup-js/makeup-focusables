@@ -73,21 +73,11 @@ console.log(keyboardItems.length) // outputs: 2
 
 * None
 
-## Development
-
-* `npm start`
-* `npm test`
-* `npm run lint`
-* `npm run fix`
-* `npm run build`
-* `npm run clean`
-
 ## Test Reports
 
 Each test run will generate the following reports:
 
 * `/reports/coverage` contains Istanbul code coverage report
-* `/reports/html` contains HTML test report
 
 ## CI Build
 

@@ -1,5 +1,5 @@
 describe('makeup-focusables', function() {
-    var focusable = require('../index.js');
+    var focusable = require('../src/index.js');
     var body = document.body;
 
     describe('when module is imported', function() {
