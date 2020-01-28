@@ -13,7 +13,7 @@ A vanilla JavaScript port of <a href="https://github.com/ianmcburnie/jquery-focu
 
 ## Experimental
 
-This module is still in an experimental state, until it reaches v1.0.0 you must consider all minor releases as breaking changes. Patch releases may introduce new features, but will be backwards compatible.
+This CommonJS module is still in an experimental state, until it reaches v1.0.0 you must consider all minor releases as breaking changes. Patch releases may introduce new features, but will be backwards compatible.
 
 ## Install
 
@@ -72,12 +72,6 @@ console.log(keyboardItems.length) // outputs: 2
 ## Polyfills
 
 * None
-
-## Test Reports
-
-Each test run will generate the following reports:
-
-* `/reports/coverage` contains Istanbul code coverage report
 
 ## CI Build
 
