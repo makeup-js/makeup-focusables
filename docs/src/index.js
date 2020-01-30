@@ -1,4 +1,4 @@
-const focusable = require('../../src/index.js');
+const focusable = require('../../index.js');
 
 const listEl = document.getElementById('list');
 const appender1 = document.getElementById('appender1');
