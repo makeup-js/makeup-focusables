@@ -1,6 +1,6 @@
 'use strict';
 
-var focusableElList = ['a[href]', 'area[href]', 'button:not([disabled])', 'embed', 'iframe', 'input:not([disabled])', 'object', 'select:not([disabled])', 'textarea:not([disabled])', '*[tabindex]', '*[contenteditable]'];
+var focusableElList = ['a[href]', 'area[href]', 'button:not([disabled])', 'embed', 'iframe', 'input:not([disabled])', 'object', 'select:not([disabled])', 'textarea:not([disabled])', '*[tabindex]:not([tabindex="-1"])', '*[contenteditable]'];
 var focusableElSelector = focusableElList.join();
 
 module.exports = function (el) {

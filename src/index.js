@@ -10,7 +10,7 @@ const focusableElList = [
     'object',
     'select:not([disabled])',
     'textarea:not([disabled])',
-    '*[tabindex]',
+    '*[tabindex]:not([tabindex="-1"])',
     '*[contenteditable]'
 ];
 
